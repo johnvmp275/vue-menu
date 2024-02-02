@@ -1,0 +1,138 @@
+{
+  "ingredients": {
+    "foods": [
+      {
+        "id": 1,
+        "type": "Macarronada"
+      },
+      {
+        "id": 2,
+        "type": "Pizza 4 queijo"
+      },
+      {
+        "id": 3,
+        "type": "King-Crab"
+      },
+      {
+        "id": 4,
+        "type": "Strogonoff"
+      },
+      {
+        "id": 5,
+        "type": "Frango Assado"
+      },
+      {
+        "id": 6,
+        "type": "Costela Assada"
+      },
+      {
+        "id": 7,
+        "type": "Palitos de Peixe"
+      }
+    ],
+    "optional": [
+      {
+        "id": 1,
+        "type": "Coca-Cola 2L"
+      },
+      {
+        "id": 2,
+        "type": "Chopp"
+      },
+      {
+        "id": 3,
+        "type": "Suco de Laranja 800ml"
+      },
+      {
+        "id": 4,
+        "type": "Vinho Tinto 2L"
+      },
+      {
+        "id": 5,
+        "type": "Vinho Rosé 2L"
+      },
+      {
+        "id": 6,
+        "type": "Suco de Manga"
+      },
+      {
+        "id": 7,
+        "type": "Chopp de Vinho"
+      }
+    ]
+  },
+  "status": [
+    {
+      "id": 1,
+      "type": "Aguardando...",
+      "color": "orange"
+    },
+    {
+      "id": 2,
+      "type": "Em produção",
+      "color": "purple"
+    },
+    {
+      "id": 3,
+      "type": "Finalizado",
+      "color": "green"
+    }
+  ],
+  "requests": [
+    {
+      "name": "João",
+      "food": [
+        "Macarronada",
+        "Pizza 4 queijo",
+        "King-Crab",
+        "Strogonoff",
+        "Frango Assado"
+      ],
+      "optional": [
+        "Coca-Cola 2L",
+        "Chopp",
+        "Suco de Laranja 800ml",
+        "Vinho Tinto 2L",
+        "Vinho Rosé 2L"
+      ],
+      "status": "Aguardando...",
+      "id": 1
+    },
+    {
+      "name": "qwdq",
+      "food": [],
+      "optional": [],
+      "status": "Aguardando...",
+      "id": 2
+    },
+    {
+      "name": "qwdq",
+      "food": [],
+      "optional": [
+        "Chopp",
+        "Suco de Laranja 800ml",
+        "Vinho Tinto 2L",
+        "Coca-Cola 2L"
+      ],
+      "status": "Aguardando...",
+      "id": 3
+    }
+  ],
+  "users": [
+    {
+      "email": "userAdmin@gmail.com",
+      "senha": "marques1803",
+      "nivel": "admin"
+    },
+    {
+      "email": "userGarcon@gmail.com",
+      "senha": "senha123",
+      "nivel": "normal"
+    },
+    {
+      "email": "teste@gmail.com",
+      "senha": "123",
+      "nivel": "gerenciador"
+    }
+  ]
+}
