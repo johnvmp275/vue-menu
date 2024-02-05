@@ -20,6 +20,7 @@ import DropdownItem from '@/components/widgets/dropdown/DropdownItem.vue';
                     <span>
                         {{ food.type }}
                     </span>
+                    <input type="number" name="number" id="number" v-model="count.id">
                 </DropdownItem>
             </Dropdown>
         </label>
@@ -47,14 +48,16 @@ import DropdownItem from '@/components/widgets/dropdown/DropdownItem.vue';
 export default {
     data() {
         return {
-            ingredients: [],
+            ingredients: {},
             titles: '',
             foods: [],
             optional: [],
             selectedOptions: [],
             selectedFoods: [],
+            countSelected: [],
             buttonIsLoading: false,
-            invalidComposition: false
+            invalidComposition: false,
+            count: ''
         }
     },
     watch: {
@@ -84,7 +87,7 @@ export default {
 
                     const data = {
                         name: this.titles,
-                        food: Array.from(this.selectedFoods),
+                        food: Array.from(this.selectedFoods, food => ({type: food, count: this.count})),
                         optional: Array.from(this.selectedOptions),
                         status: 'Aguardando...'
                     }
@@ -151,6 +154,7 @@ label {
     box-shadow: 0 5px 10px 1px var(--background-black);
     transition: .5s;
     border-radius: 8px;
+    padding: 0 16px;
     width: 100%;
     height: 50px;
 }
@@ -172,7 +176,17 @@ button {
 
 input[type="checkbox"] {
     cursor: pointer;
-    width: 24px;
-    margin-right: 20px;
+    max-width: 20px;
+    height: 20px;
 }
+
+span{
+    width: 100%;
+    font-size: 14px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+
 </style>

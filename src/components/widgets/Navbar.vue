@@ -1,5 +1,5 @@
 <script setup>
-import {RouterLink} from 'vue-router'
+import { RouterLink } from 'vue-router'
 </script>
 
 <template>
@@ -28,6 +28,31 @@ import {RouterLink} from 'vue-router'
       </div>
     </section>
   </nav>
+
+  <nav class="navigation-mobile">
+    <section class="navigation-section">
+      <div class="navigation-link">
+        <RouterLink to="/">
+          <span class="material-symbols-outlined">
+            store
+          </span>
+        </RouterLink>
+        <RouterLink to="/dashboard">
+          <span class="material-symbols-outlined">
+            shopping_cart
+          </span>
+        </RouterLink>
+        <RouterLink to="/create" class="animation-rotate">
+          <span class="material-symbols-outlined">
+            settings
+          </span>
+        </RouterLink>
+        <!-- <div class="indicador">
+          <div class="indicador-list"></div>
+        </div> -->
+      </div>
+    </section>
+  </nav>
 </template>
 
 <script>
@@ -38,13 +63,6 @@ export default {
 </script>
 
 <style scoped>
-.navigation-desktop {
-  width: 107px;
-  height: 100vh;
-  padding: 16px;
-  /* justify-content: space-between; */
-}
-
 .navigation-section {
   top: 0;
   left: 0;
@@ -56,7 +74,6 @@ export default {
   background: var(--background-orange);
   box-shadow: 0 5px 10px 4px var(--background-black);
   flex-direction: column;
-  /* border-radius: 0 8px 8px 0; */
 }
 
 .navigation-link {
@@ -104,7 +121,7 @@ a.router-link-active span {
 
 .indicador {
   position: fixed;
-  width: 112px;
+  width: 98px;
   height: 89px;
   left: 10px;
   top: 63px;
@@ -118,7 +135,7 @@ a.router-link-active span {
   content: '';
   position: absolute;
   top: -28px;
-  right: 7px;
+  right: -7px;
   width: 20px;
   height: 20px;
   border-bottom-right-radius: 10px;
@@ -129,13 +146,31 @@ a.router-link-active span {
 .indicador::after {
   content: '';
   position: absolute;
-  right: 7px;
+  right: -7px;
   bottom: -28px;
   width: 20px;
   height: 20px;
   border-top-right-radius: 10px;
   background: var(--background-orange);
   box-shadow: 0 -10px 0 0 var(--background-gray-600);
+}
+
+.navigation-mobile {
+  display: none;
+  width: 100%;
+}
+
+.navigation-mobile .navigation-section {
+  width: 100%;
+  height: 100px;
+}
+
+.navigation-mobile .navigation-link {
+  flex-direction: row;
+  height: 100%;
+  display: flex;
+  margin: 0 auto;
+  align-items: center;
 }
 
 a.router-link-active {
@@ -183,8 +218,18 @@ a.router-link-active {
 }
 
 @media (max-width: 720px) {
+
   .navigation-desktop {
     display: none;
   }
+
+  .navigation-mobile {
+    display: flex;
+  }
+
+  .navigation-section {
+    position: relative;
+  }
+
 }
 </style>

@@ -11,22 +11,25 @@
 #app {
     display: flex;
     justify-content: center;
+    flex-direction: column;
     align-items: center;
+    height: 100%;
 }
 
 body {
     background: var(--background-gray-600);
+    height: 100vh;
 }
 
 main {
     display: flex;
     margin: 0 auto;
     width: 100%;
-    height: 100vh;
+    height: 100%;
     max-width: 1330px;
     align-items: center;
     flex-direction: column;
-    padding: 16px;
+    padding: 0 16px;
 }
 
 a {
@@ -41,4 +44,15 @@ input {
     border: none;
     border-radius: 8px;
     color: var(--background-white);
+}
+
+li{
+    list-style: none;
+}
+
+
+@media (max-width: 720px) {
+    main {
+        overflow-y: auto;
+    }
 }

@@ -80,42 +80,108 @@
   ],
   "requests": [
     {
-      "name": "João",
+      "name": "qwdq",
       "food": [
-        "Macarronada",
-        "Pizza 4 queijo",
-        "King-Crab",
-        "Strogonoff",
-        "Frango Assado"
+        {
+          "type": "Macarronada",
+          "count": 1
+        }
       ],
-      "optional": [
-        "Coca-Cola 2L",
-        "Chopp",
-        "Suco de Laranja 800ml",
-        "Vinho Tinto 2L",
-        "Vinho Rosé 2L"
-      ],
+      "optional": [],
       "status": "Aguardando...",
       "id": 1
     },
     {
       "name": "qwdq",
-      "food": [],
+      "food": [
+        {
+          "type": "Macarronada",
+          "count": 1
+        }
+      ],
       "optional": [],
       "status": "Aguardando...",
       "id": 2
     },
     {
       "name": "qwdq",
-      "food": [],
-      "optional": [
-        "Chopp",
-        "Suco de Laranja 800ml",
-        "Vinho Tinto 2L",
-        "Coca-Cola 2L"
+      "food": [
+        {
+          "type": "Macarronada",
+          "count": []
+        },
+        {
+          "type": "King-Crab",
+          "count": []
+        }
       ],
+      "optional": [],
       "status": "Aguardando...",
       "id": 3
+    },
+    {
+      "name": "qwdq",
+      "food": [
+        {
+          "type": "Macarronada",
+          "count": ""
+        }
+      ],
+      "optional": [],
+      "status": "Aguardando...",
+      "id": 4
+    },
+    {
+      "name": "qwdq",
+      "food": [
+        {
+          "type": "Macarronada",
+          "count": 6
+        },
+        {
+          "type": "King-Crab",
+          "count": 6
+        }
+      ],
+      "optional": [],
+      "status": "Aguardando...",
+      "id": 5
+    },
+    {
+      "name": "qwdq",
+      "food": [
+        {
+          "type": "Macarronada",
+          "count": ""
+        }
+      ],
+      "optional": [],
+      "status": "Aguardando...",
+      "id": 6
+    },
+    {
+      "name": "qwdq",
+      "food": [
+        {
+          "type": "King-Crab",
+          "count": ""
+        },
+        {
+          "type": "Macarronada",
+          "count": ""
+        },
+        {
+          "type": "Frango Assado",
+          "count": ""
+        },
+        {
+          "type": "Palitos de Peixe",
+          "count": ""
+        }
+      ],
+      "optional": [],
+      "status": "Aguardando...",
+      "id": 7
     }
   ],
   "users": [

@@ -61,8 +61,9 @@ export default {
     top: 60px;
     width: 100%;
     padding: 16px;
+    gap: 8px;
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
     background: var(--background-white);
     box-shadow: 0 5px 10px 1px var(--background-black);
     border-radius: 5px;

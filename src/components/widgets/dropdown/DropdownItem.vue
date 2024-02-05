@@ -7,6 +7,9 @@
 <style>
 .dropdown-item{
     display: flex;
-    margin-bottom: 30px;
+    align-items: center;
+    height: 30px;
+    gap: 8px;
+    width: 45%;
 }
 </style> >
