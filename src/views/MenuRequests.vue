@@ -164,16 +164,6 @@ label.invalid .annotation-name {
     box-shadow: 0 0 10px 0 var(--background-red);
 }
 
-button {
-    width: 100%;
-    height: 50px;
-    font-weight: bold;
-    font-size: 16px;
-    border-radius: 8px;
-    background: var(--background-orange);
-    color: var(--background-white);
-}
-
 input[type="checkbox"] {
     cursor: pointer;
     max-width: 20px;

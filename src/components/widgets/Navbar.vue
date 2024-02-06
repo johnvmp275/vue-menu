@@ -8,19 +8,13 @@ import { RouterLink } from 'vue-router'
     <section class="navigation-section">
       <div class="navigation-link">
         <RouterLink to="/">
-          <span class="material-symbols-outlined">
-            store
-          </span>
+          <span class="material-symbols-outlined"> store </span>
         </RouterLink>
         <RouterLink to="/dashboard">
-          <span class="material-symbols-outlined">
-            shopping_cart
-          </span>
+          <span class="material-symbols-outlined"> shopping_cart </span>
         </RouterLink>
         <RouterLink to="/create" class="animation-rotate">
-          <span class="material-symbols-outlined">
-            settings
-          </span>
+          <span class="material-symbols-outlined"> settings </span>
         </RouterLink>
         <div class="indicador">
           <div class="indicador-list"></div>
@@ -33,19 +27,13 @@ import { RouterLink } from 'vue-router'
     <section class="navigation-section">
       <div class="navigation-link">
         <RouterLink to="/">
-          <span class="material-symbols-outlined">
-            store
-          </span>
+          <span class="material-symbols-outlined"> store </span>
         </RouterLink>
         <RouterLink to="/dashboard">
-          <span class="material-symbols-outlined">
-            shopping_cart
-          </span>
+          <span class="material-symbols-outlined"> shopping_cart </span>
         </RouterLink>
         <RouterLink to="/create" class="animation-rotate">
-          <span class="material-symbols-outlined">
-            settings
-          </span>
+          <span class="material-symbols-outlined"> settings </span>
         </RouterLink>
         <!-- <div class="indicador">
           <div class="indicador-list"></div>
@@ -56,13 +44,15 @@ import { RouterLink } from 'vue-router'
 </template>
 
 <script>
-
-export default {
-
-}
+export default {}
 </script>
 
 <style scoped>
+
+.navigation-desktop{
+  width: 107px;
+  position: relative;
+}
 .navigation-section {
   top: 0;
   left: 0;
@@ -101,7 +91,7 @@ a {
 a span {
   transition: 1s;
   font-size: 34px;
-  opacity: .5;
+  opacity: 0.5;
 }
 
 .indicador-list {
@@ -181,11 +171,11 @@ a.router-link-active {
   animation: rotation 5s linear infinite;
 }
 
-.navigation-link a.router-link-active:nth-child(2).router-link-active~.indicador {
+.navigation-link a.router-link-active:nth-child(2).router-link-active ~ .indicador {
   transform: translateY(calc(93px * 1));
 }
 
-.navigation-link a.router-link-active:nth-child(3).router-link-active~.indicador {
+.navigation-link a.router-link-active:nth-child(3).router-link-active ~ .indicador {
   transform: translateY(calc(93px * 2));
 }
 
@@ -218,7 +208,6 @@ a.router-link-active {
 }
 
 @media (max-width: 720px) {
-
   .navigation-desktop {
     display: none;
   }
@@ -230,6 +219,5 @@ a.router-link-active {
   .navigation-section {
     position: relative;
   }
-
 }
 </style>

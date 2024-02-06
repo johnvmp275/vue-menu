@@ -30,10 +30,16 @@ span {
 
 button {
     outline: none;
+    width: 100%;
     height: 51px;
     border: none;
     cursor: pointer;
     box-shadow: 0 5px 10px 1px var(--background-black);
+    font-weight: bold;
+    font-size: 16px;
+    border-radius: 8px;
+    background: var(--background-orange);
+    color: var(--background-white);
 }
 
 @keyframes loader {
