@@ -80,108 +80,29 @@
   ],
   "requests": [
     {
-      "name": "qwdq",
+      "name": "João Vitor",
       "food": [
         {
           "type": "Macarronada",
-          "count": 1
+          "count": "2"
+        },
+        {
+          "type": "Pizza 4 queijo",
+          "count": "2"
         }
       ],
-      "optional": [],
+      "optional": [
+        {
+          "optional": "Coca-Cola 2L",
+          "count": "2"
+        },
+        {
+          "optional": "Chopp",
+          "count": "3"
+        }
+      ],
       "status": "Aguardando...",
       "id": 1
-    },
-    {
-      "name": "qwdq",
-      "food": [
-        {
-          "type": "Macarronada",
-          "count": 1
-        }
-      ],
-      "optional": [],
-      "status": "Aguardando...",
-      "id": 2
-    },
-    {
-      "name": "qwdq",
-      "food": [
-        {
-          "type": "Macarronada",
-          "count": []
-        },
-        {
-          "type": "King-Crab",
-          "count": []
-        }
-      ],
-      "optional": [],
-      "status": "Aguardando...",
-      "id": 3
-    },
-    {
-      "name": "qwdq",
-      "food": [
-        {
-          "type": "Macarronada",
-          "count": ""
-        }
-      ],
-      "optional": [],
-      "status": "Aguardando...",
-      "id": 4
-    },
-    {
-      "name": "qwdq",
-      "food": [
-        {
-          "type": "Macarronada",
-          "count": 6
-        },
-        {
-          "type": "King-Crab",
-          "count": 6
-        }
-      ],
-      "optional": [],
-      "status": "Aguardando...",
-      "id": 5
-    },
-    {
-      "name": "qwdq",
-      "food": [
-        {
-          "type": "Macarronada",
-          "count": ""
-        }
-      ],
-      "optional": [],
-      "status": "Aguardando...",
-      "id": 6
-    },
-    {
-      "name": "qwdq",
-      "food": [
-        {
-          "type": "King-Crab",
-          "count": ""
-        },
-        {
-          "type": "Macarronada",
-          "count": ""
-        },
-        {
-          "type": "Frango Assado",
-          "count": ""
-        },
-        {
-          "type": "Palitos de Peixe",
-          "count": ""
-        }
-      ],
-      "optional": [],
-      "status": "Aguardando...",
-      "id": 7
     }
   ],
   "users": [

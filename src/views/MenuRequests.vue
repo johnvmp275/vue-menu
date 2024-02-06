@@ -1,7 +1,7 @@
 <script setup>
 import ButtonLoader from '@/components/widgets/Button-Loader.vue';
-import Dropdown from '@/components/widgets/DropdownDefault.vue';
-import DropdownItem from '@/components/widgets/dropdown/DropdownItem.vue';
+import Select from '@/components/widgets/SelectDefault.vue';
+import SelectItem from '@/components/widgets/select/SelectItem.vue';
 </script>
 
 <template>
@@ -12,30 +12,31 @@ import DropdownItem from '@/components/widgets/dropdown/DropdownItem.vue';
             <input type="text" name="titles" id="titles" v-model="titles" placeholder="Nome do Cliente" class="annotation-name" @keydown.enter="submitTheRequests" />
         </label>
 
-        <label for="food">
+        <section>
             Cardápio:
-            <Dropdown :dataInserted="foods" dropdownText="Escolha o prato">
-                <DropdownItem v-for="food in foods" :key="food.id">
-                    <input type="checkbox" name="food" id="food" v-model="selectedFoods" :value="food.type" />
+            <Select :dataInserted="foods" SelectText="Escolha o prato">
+                <SelectItem v-for="food in foods" :key="food.id">
+                    <input type="checkbox" name="checkbox" id="checkbox" v-model="selectedFoods" :value="food.type" />
                     <span>
                         {{ food.type }}
                     </span>
-                    <input type="number" name="number" id="number" v-model="count.id">
-                </DropdownItem>
-            </Dropdown>
-        </label>
+                    <input type="tel" name="tel" id="tel" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" v-model="countSelected[food.type]">
+                </SelectItem>
+            </Select>
+        </section>
 
-        <label for="optional">
+        <section>
             Acompanhamento:
-            <Dropdown :dataInserted="optional" dropdownText="Escolha o Acompanhamento">
-                <DropdownItem v-for="optional in optional" :key="optional.id">
+            <Select :dataInserted="optional" SelectText="Escolha o Acompanhamento">
+                <SelectItem v-for="optional in optional" :key="optional.id">
                     <input type="checkbox" name="optional" id="optional" v-model="selectedOptions" :value="optional.type" />
                     <span>
                         {{ optional.type }}
                     </span>
-                </DropdownItem>
-            </Dropdown>
-        </label>
+                    <input type="tel" name="tel" id="tel" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" v-model="countSelected[optional.type]">
+                </SelectItem>
+            </Select>
+        </section>
 
         <ButtonLoader :buttonIsLoading="buttonIsLoading" @click="submitTheRequests">
             Enviar o Pedido
@@ -54,10 +55,9 @@ export default {
             optional: [],
             selectedOptions: [],
             selectedFoods: [],
-            countSelected: [],
+            countSelected: {},
             buttonIsLoading: false,
             invalidComposition: false,
-            count: ''
         }
     },
     watch: {
@@ -87,8 +87,8 @@ export default {
 
                     const data = {
                         name: this.titles,
-                        food: Array.from(this.selectedFoods, food => ({type: food, count: this.count})),
-                        optional: Array.from(this.selectedOptions),
+                        food: Array.from(this.selectedFoods, food => ({type: food, count: this.countSelected[food] || 1})),
+                        optional: Array.from(this.selectedOptions, optional => ({optional, count: this.countSelected[optional] || 1})),
                         status: 'Aguardando...'
                     }
 
@@ -141,7 +141,7 @@ export default {
     max-width: 536px;
 }
 
-label {
+label, section {
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -188,5 +188,14 @@ span{
     white-space: nowrap;
 }
 
+#tel{
+    width: 40px;
+    padding: 0px;
+    text-align: center;
+    background: transparent;
+    color: var(--background-black);
+    border: 1px solid var(--background-black);
+    border-radius: 0px;
+}
 
 </style>

@@ -1,45 +1,52 @@
 <script setup>
 import Button from '@/components/widgets/Button-Loader.vue'
+import Dropdown from '@/components/widgets/Dropdown.vue'
 </script>
 
 <template>
     <template v-if="requests.length">
-        <section class="table-request" v-for="request in requests" :key="request.id">
 
-            <div>
-                <strong>Nome:</strong>
-                <p>{{ request.name }}</p>
-            </div>
+        <table>
 
-            <div>
-                <strong>Pedido:</strong>
-                <ul>
-                    <li v-for="(request, index) in request.food" :key="index">
-                        <p>{{ request.type }}</p>
-                        <bold> x{{ request.count }}</bold>
-                    </li>
-                </ul>
-            </div>
+            <tr>
+                <th>Nome:</th>
+                <th>Pedido:</th>
+                <th>Acompanhamentos:</th>
+                <th>Status:</th>
+            </tr>
 
-            <div>
-                <strong>Acompanhamentos:</strong>
-                <ul>
-                    <li v-for="(request, index) in request.optional" :key="index">
-                        <p>{{ request }}</p>
-                    </li>
-                </ul>
-            </div>
+            <tr v-for="request in requests" :key="request.id">
 
-            <div>
-                <strong>Status:</strong>
-                <p>{{ request.status }}</p>
-            </div>
+                <td>
+                    <p>{{ request.name }}</p>
+                </td>
 
-            <div>
-                <Button>Teste</Button>
-            </div>
+                <td>
+                    <ul>
+                        <li v-for="(request, index) in request.food" :key="index">
+                            <p>{{ request.type }}</p>
+                            <bold> x{{ request.count }}</bold>
+                        </li>
+                    </ul>
+                </td>
 
-        </section>
+                <td>
+                    <ul>
+                        <li v-for="(request, index) in request.optional" :key="index">
+                            <p>{{ request.optional }}</p>
+                            <bold> x{{ request.count }}</bold>
+                        </li>
+                    </ul>
+                </td>
+
+                <td>
+                    <p>{{ request.status }}</p>
+                    <Button>Teste</Button>
+                </td>
+            </tr>
+
+        </table>
+
     </template>
 
     <template v-else>
@@ -80,18 +87,19 @@ export default {
 </script>
 
 <style scoped>
-.table-request {
-    margin-top: 20px;
-    background: var(--background-white);
-    padding: 16px;
-    border-radius: 8px;
+
+table {
     width: 100%;
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
+    background: var(--background-white);
+    padding: 16px;
 }
 
-div {
-    width: 20%;
+tr {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
 }
 
 .edit-status-request {
