@@ -27,8 +27,15 @@ export default {
     },
     methods: {
         OpenTheDropdown() {
+            // Verifica se há outro dropdown aberto e o fecha antes de abrir este
+            if (this.$root.currentOpenDropdown && this.$root.currentOpenDropdown !== this) {
+                this.$root.currentOpenDropdown.showDropdown = false;
+            }
+
             this.showDropdown = !this.showDropdown;
-        }
+            // Atualiza a variável currentOpenDropdown para este componente
+            this.$root.currentOpenDropdown = this;
+        },
     },
 };
 </script>
@@ -38,6 +45,8 @@ export default {
     margin-bottom: 30px;
     display: flex;
     flex-direction: column;
+    position: relative;
+    width: 100%;
     gap: 10px;
 }
 
@@ -62,6 +71,7 @@ export default {
     width: 100%;
     padding: 16px;
     gap: 8px;
+    position: absolute;
     display: flex;
     background: var(--background-white);
     box-shadow: 0 5px 10px 1px var(--background-black);

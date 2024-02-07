@@ -1,10 +1,13 @@
 <template>
     <div class="dropdown">
         <div class="selected-item" @click="OpenTheDropdown">
+            <slot name="selected"></slot>
+
             {{ SelectText }}
+
         </div>
-        <div :class="{ 'dropdown-list': true, 'open': showDropdown }">
-            <slot v-if="dataInserted.length" />
+        <div class="dropdown-list" v-show="showDropdown">
+            <slot v-if="dataInserted.length" @click="close" />
 
             <p v-else>
                 Não há dados inseridos por aqui :(
@@ -23,13 +26,21 @@ export default {
     },
     props: {
         SelectText: String,
-        dataInserted: Array
+        dataInserted: Array,
     },
     methods: {
         OpenTheDropdown() {
-            
-            //close or open all open selects
+            // Verifica se há outro dropdown aberto e o fecha antes de abrir este
+            if (this.$root.currentOpenDropdown && this.$root.currentOpenDropdown !== this) {
+                this.$root.currentOpenDropdown.showDropdown = false;
+            }
+
             this.showDropdown = !this.showDropdown;
+            // Atualiza a variável currentOpenDropdown para este componente
+            this.$root.currentOpenDropdown = this;
+        },
+        close(){
+            this.showDropdown = false;
         }
     },
 };
@@ -39,11 +50,13 @@ export default {
 .dropdown {
     position: relative;
     display: flex;
+    width: 100%;
 }
 
 .selected-item {
     width: 100%;
     height: 50px;
+    gap: 8px;
     padding: 10px;
     display: flex;
     align-items: center;
@@ -62,9 +75,9 @@ export default {
     position: absolute;
     top: 60px;
     width: 100%;
-    padding: 16px;
+    padding: 10px;
     gap: 8px;
-    display: none;
+    display: flex;
     flex-wrap: wrap;
     background: var(--background-white);
     box-shadow: 0 5px 10px 1px var(--background-black);

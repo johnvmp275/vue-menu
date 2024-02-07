@@ -50,7 +50,7 @@ export default {}
 <style scoped>
 
 .navigation-desktop{
-  width: 107px;
+  width: auto;
   position: relative;
 }
 .navigation-section {
@@ -59,6 +59,7 @@ export default {}
   display: flex;
   width: 107px;
   height: 100%;
+  z-index: 9999999999999999;
   align-items: center;
   position: fixed;
   background: var(--background-orange);

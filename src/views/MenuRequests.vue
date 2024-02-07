@@ -1,39 +1,78 @@
 <script setup>
+import Loader from '@/components/Loader.vue';
 import ButtonLoader from '@/components/widgets/Button-Loader.vue';
 import Select from '@/components/widgets/SelectDefault.vue';
 import SelectItem from '@/components/widgets/select/SelectItem.vue';
 </script>
 
 <template>
+    <Loader :loaderIsActive="loaderIsActive" />
+    
     <div class="table-for-annotation">
 
         <label for="titles" :class="{ 'invalid': invalidComposition }">
             Nome do Cliente:
-            <input type="text" name="titles" id="titles" v-model="titles" placeholder="Nome do Cliente" class="annotation-name" @keydown.enter="submitTheRequests" />
+            <input 
+                type="text" 
+                name="titles" 
+                id="titles" 
+                v-model="titles" 
+                placeholder="Nome do Cliente"
+                class="annotation-name" 
+                @keydown.enter="submitTheRequests" 
+            />
         </label>
 
         <section>
             Cardápio:
-            <Select :dataInserted="foods" SelectText="Escolha o prato">
+            <Select :dataInserted="foods" SelectText="Escolha o prato" >
                 <SelectItem v-for="food in foods" :key="food.id">
-                    <input type="checkbox" name="checkbox" id="checkbox" v-model="selectedFoods" :value="food.type" />
+                    <input 
+                        type="checkbox" 
+                        name="checkbox" 
+                        id="checkbox" 
+                        v-model="selectedFoods" 
+                        :value="food.type" 
+                    />
                     <span>
                         {{ food.type }}
                     </span>
-                    <input type="tel" name="tel" id="tel" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" v-model="countSelected[food.type]">
+                    <input 
+                        type="tel" 
+                        name="tel" 
+                        id="tel"
+                        oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');"
+                        v-model="countSelected[food.type]"
+                    />
                 </SelectItem>
             </Select>
         </section>
 
         <section>
             Acompanhamento:
-            <Select :dataInserted="optional" SelectText="Escolha o Acompanhamento">
+            <Select :dataInserted="optional" SelectText="Escolha o Acompanhamento" >
                 <SelectItem v-for="optional in optional" :key="optional.id">
-                    <input type="checkbox" name="optional" id="optional" v-model="selectedOptions" :value="optional.type" />
+                    
+                    <input 
+                    type="checkbox" 
+                    name="optional" 
+                    id="optional" 
+                    v-model="selectedOptions" 
+                    :value="optional.type" 
+                    />
+
                     <span>
                         {{ optional.type }}
                     </span>
-                    <input type="tel" name="tel" id="tel" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" v-model="countSelected[optional.type]">
+
+                    <input 
+                    type="tel" 
+                    name="tel" 
+                    id="tel"
+                    oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');"
+                    v-model="countSelected[optional.type]"
+                    />
+
                 </SelectItem>
             </Select>
         </section>
@@ -58,6 +97,7 @@ export default {
             countSelected: {},
             buttonIsLoading: false,
             invalidComposition: false,
+            loaderIsActive: true,
         }
     },
     watch: {
@@ -75,8 +115,9 @@ export default {
 
             } catch (error) {
                 console.error('Houve um erro de busca', error)
+            } finally {
+                this.loaderIsActive = false
             }
-            this.isLoader = true
         },
         async submitTheRequests() {
             try {
@@ -87,8 +128,8 @@ export default {
 
                     const data = {
                         name: this.titles,
-                        food: Array.from(this.selectedFoods, food => ({type: food, count: this.countSelected[food] || 1})),
-                        optional: Array.from(this.selectedOptions, optional => ({optional, count: this.countSelected[optional] || 1})),
+                        food: Array.from(this.selectedFoods, food => ({ type: food, count: this.countSelected[food] || 1 })),
+                        optional: Array.from(this.selectedOptions, optional => ({ optional, count: this.countSelected[optional] || 1 })),
                         status: 'Aguardando...'
                     }
 
@@ -106,6 +147,7 @@ export default {
 
                     this.selectedOptions = []
                     this.selectedFoods = []
+                    this.countSelected = {}
                     this.titles = ''
 
                 } else {
@@ -122,7 +164,7 @@ export default {
             if (this.titles !== '') {
                 this.invalidComposition = false
             }
-        }
+        },
     },
     mounted() {
         this.getDadosFromIngredients()
@@ -141,7 +183,8 @@ export default {
     max-width: 536px;
 }
 
-label, section {
+label,
+section {
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -170,7 +213,7 @@ input[type="checkbox"] {
     height: 20px;
 }
 
-span{
+span {
     width: 100%;
     font-size: 14px;
     overflow: hidden;
@@ -178,7 +221,7 @@ span{
     white-space: nowrap;
 }
 
-#tel{
+#tel {
     width: 40px;
     padding: 0px;
     text-align: center;
@@ -188,4 +231,13 @@ span{
     border-radius: 0px;
 }
 
+.dropdown-item {
+    width: 45%;
+}
+
+@media (max-width : 750px) {
+    .dropdown-item {
+        width: 100%;
+    }
+}
 </style>

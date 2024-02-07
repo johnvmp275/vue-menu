@@ -84,54 +84,42 @@
       "food": [
         {
           "type": "Macarronada",
-          "count": "2"
-        },
-        {
-          "type": "Pizza 4 queijo",
-          "count": "2"
+          "count": "10"
         }
       ],
       "optional": [
         {
           "optional": "Coca-Cola 2L",
-          "count": "2"
-        },
-        {
-          "optional": "Chopp",
-          "count": "3"
+          "count": "8"
         }
       ],
-      "status": "Aguardando...",
+      "status": "Em produção",
       "id": 1
     },
     {
-      "name": "swqwsqwsq",
-      "food": [],
+      "name": "Anne Louise",
+      "food": [
+        {
+          "type": "King-Crab",
+          "count": "1"
+        },
+        {
+          "type": "Frango Assado",
+          "count": "2"
+        }
+      ],
       "optional": [
         {
+          "optional": "Suco de Laranja 800ml",
+          "count": "1"
+        },
+        {
           "optional": "Coca-Cola 2L",
-          "count": "11111"
+          "count": "1"
         }
       ],
       "status": "Aguardando...",
       "id": 2
-    },
-    {
-      "name": "qwdq",
-      "food": [
-        {
-          "type": "Macarronada",
-          "count": "10"
-        }
-      ],
-      "optional": [
-        {
-          "optional": "Coca-Cola 2L",
-          "count": "10"
-        }
-      ],
-      "status": "Aguardando...",
-      "id": 3
     }
   ],
   "users": [
