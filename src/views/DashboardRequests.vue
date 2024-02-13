@@ -8,6 +8,8 @@ import Loader from '@/components/Loader.vue';
 <template>
     <Loader :loaderIsActive="loaderIsActive" />
     <template v-if="requests.length">
+
+        <!-- desktop version of the ordering process -->
         <table class="table-desktop">
             <tr class="table-header">
                 <th>Nome:</th>
@@ -24,8 +26,9 @@ import Loader from '@/components/Loader.vue';
                 <td>
                     <ul>
                         <li v-for="(request, index) in request.food" :key="index">
-                            <p>{{ request.type }}</p>
-                            <bold> x{{ request.count }}</bold>
+                            <p>{{ request.type }}
+                                <strong> x{{ request.count }}</strong>
+                            </p>
                         </li>
                     </ul>
                 </td>
@@ -33,14 +36,15 @@ import Loader from '@/components/Loader.vue';
                 <td>
                     <ul>
                         <li v-for="(request, index) in request.optional" :key="index">
-                            <p>{{ request.optional }}</p>
-                            <bold> x{{ request.count }}</bold>
+                            <p>{{ request.optional }}
+                                <strong> x{{ request.count }}</strong>
+                            </p>
                         </li>
                     </ul>
                 </td>
 
                 <td class="edit-table">
-                    <Select :dataInserted="status">
+                    <Select getClass="select-list" :dataInserted="status">
                         <template v-slot:selected>
                             <div class="circle_status" :style="{ background: getCircleColor(request.status) }"></div>
                             <p>{{ getSelectedStatus(request.status) }}</p>
@@ -48,7 +52,7 @@ import Loader from '@/components/Loader.vue';
                         <SelectItem v-for="(s, index) in status" :key="s.id"
                             @click="updateStatus(s.type, request.id, index)">
                             <div class="circle_status" :style="{ background: s.color }"></div>
-                            {{ s.type }}
+                            <p>{{ s.type }}</p>
                         </SelectItem>
                     </Select>
                     <Button @click=" deletedRequestItem(request.id)">
@@ -57,6 +61,62 @@ import Loader from '@/components/Loader.vue';
                 </td>
             </tr>
         </table>
+
+        <!-- mobile version of the ordering process -->
+        <section class="table-mobile">
+            <Select 
+                v-for="request in requests" 
+                :key="request.id" 
+                :dataInserted="status"
+                getClass="dropdown-list"
+            >
+
+            <template v-slot:selected>
+            <p><strong>Nome:</strong> {{request.name}}</p>
+            </template>
+            
+                <SelectItem>
+                    <ul>
+                        <strong>Pedido:</strong>
+                        <li v-for="(request, index) in request.food" :key="index">
+                            <p>{{ request.type }}
+                                <strong> x{{ request.count }}</strong>
+                            </p>
+                        </li>
+                    </ul>
+                </SelectItem>
+
+                <SelectItem>
+                    <ul>
+                        <strong>Acompanhamentos:</strong>
+                        <li v-for="(request, index) in request.optional" :key="index">
+                            <p>{{ request.optional }}
+                                <strong> x{{ request.count }}</strong>
+                            </p>
+                        </li>
+                    </ul>
+                </SelectItem>
+
+                <div class="edit-table">
+                    <strong>Status:</strong>
+                    <Select getClass="select-list" :dataInserted="status">
+                        <template v-slot:selected>
+                            <div class="circle_status" :style="{ background: getCircleColor(request.status) }"></div>
+                            <p>{{ getSelectedStatus(request.status) }}</p>
+                        </template>
+                        <SelectItem v-for="(s, index) in status" :key="s.id"
+                            @click="updateStatus(s.type, request.id, index)">
+                            <div class="circle_status" :style="{ background: s.color }"></div>
+                            <p>{{ s.type }}</p>
+                        </SelectItem>
+                    </Select>
+                    <Button @click=" deletedRequestItem(request.id)">
+                        <span class="material-symbols-outlined"> delete </span>
+                    </Button>
+                </div>
+            </Select>
+        </section>
+
     </template>
 
     <template v-else>
@@ -187,12 +247,17 @@ table {
     display: flex;
     flex-direction: column;
     color: var(--background-white);
-    padding: 16px;
+    padding: 16px 0;
+}
+
+.table-mobile {
+    display: none;
 }
 
 th,
 td {
     display: flex;
+    min-width: 100%;
     align-items: center;
 }
 
@@ -222,7 +287,7 @@ li {
 }
 
 Button {
-    max-width: 50px;
+    width: 80px;
 }
 
 .circle_status {
@@ -231,13 +296,32 @@ Button {
     border-radius: 100%;
 }
 
-.dropdown-item {
-    padding: 0;
+.table-mobile {
+    width: 100%;
+    gap: 20px;
+    flex-direction: column;
 }
 
-@media (max-width: 750px) {
+@media (max-width: 900px) {
     .table-desktop {
         display: none;
     }
+
+    .table-mobile {
+        display: flex;
+    }
+
+    .edit-table {
+        flex-direction: column;
+    }
+
+    .table-mobile Button {
+        width: 100%;
+    }
+
+    .table-mobile .dropdown-item {
+        margin-bottom: 20px;
+    }
+
 }
 </style>

@@ -1,13 +1,13 @@
 <template>
-    <div class="dropdown">
-        <div class="selected-item" @click="OpenTheDropdown">
+    <div class="select">
+        <div class="selected-item" @click="showItemDropdown">
             <slot name="selected"></slot>
 
             {{ SelectText }}
 
         </div>
-        <div class="dropdown-list" v-show="showDropdown">
-            <slot v-if="dataInserted.length" @click="close" />
+        <div :class="[getClass, { 'show': showSelect }]">
+            <slot v-if="dataInserted.length" />
 
             <p v-else>
                 Não há dados inseridos por aqui :(
@@ -21,35 +21,37 @@
 export default {
     data() {
         return {
-            showDropdown: false,
+            showSelect: false,
         }
     },
     props: {
         SelectText: String,
+        getClass: String,
         dataInserted: Array,
     },
     methods: {
-        OpenTheDropdown() {
-            // Verifica se há outro dropdown aberto e o fecha antes de abrir este
-            if (this.$root.currentOpenDropdown && this.$root.currentOpenDropdown !== this) {
-                this.$root.currentOpenDropdown.showDropdown = false;
-            }
+        showItemDropdown() {
+            this.showSelect = !this.showSelect;
 
-            this.showDropdown = !this.showDropdown;
-            // Atualiza a variável currentOpenDropdown para este componente
-            this.$root.currentOpenDropdown = this;
+            const selectLists = document.querySelectorAll('.select-list');
+
+            selectLists.forEach(selectList => {
+
+                if (selectList.classList.contains('show')) {
+                    selectList.classList.remove('show');
+                }
+                
+            });
         },
-        close(){
-            this.showDropdown = false;
-        }
-    },
+    }
 };
 </script>
     
-<style scoped>
-.dropdown {
+<style >
+.select {
     position: relative;
     display: flex;
+    flex-direction: column;
     width: 100%;
 }
 
@@ -64,20 +66,22 @@ export default {
     color: var(--background-gray-700);
     border-radius: 8px;
     cursor: pointer;
-    box-shadow: 0 5px 10px 10px var(--background-gray-700);
+    box-shadow: 0 5px 10px 1px var(--background-gray-700);
 }
 
 .selected-item.invalid {
     border: 2px solid var(--background-red);
 }
 
-.dropdown-list {
+
+.select-list {
     position: absolute;
     top: 60px;
     width: 100%;
+    height: auto;
     padding: 10px;
     gap: 8px;
-    display: flex;
+    display: none;
     flex-wrap: wrap;
     background: var(--background-white);
     box-shadow: 0 5px 10px 1px var(--background-black);
@@ -86,11 +90,11 @@ export default {
     z-index: 9999999;
 }
 
-.dropdown-list.open {
+.select-list.show {
     display: flex;
 }
 
-.dropdown-list::before {
+.select-list::before {
     content: '';
     position: absolute;
     z-index: 1000;
@@ -103,5 +107,24 @@ export default {
     background: var(--background-white);
     border-left: 1px solid var(--background-gray-700);
     border-top: 1px solid var(--background-gray-700);
+}
+
+.dropdown-list {
+    margin-top: 20px;
+    width: 100%;
+    height: auto;
+    padding: 16px;
+    gap: 8px;
+    display: none;
+    flex-direction: column;
+    background: var(--background-white);
+    box-shadow: 0 5px 10px 1px var(--background-black);
+    border-radius: 5px;
+    color: black;
+    z-index: 9999999;
+}
+
+.dropdown-list.show {
+    display: flex;
 }
 </style>

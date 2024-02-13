@@ -24,7 +24,7 @@ import { RouterLink } from 'vue-router'
   </nav>
 
   <nav class="navigation-mobile">
-    <section class="navigation-section">
+    <section class="navigation-section-mobile">
       <div class="navigation-link">
         <RouterLink to="/">
           <span class="material-symbols-outlined"> store </span>
@@ -65,6 +65,25 @@ export default {}
   background: var(--background-orange);
   box-shadow: 0 5px 10px 4px var(--background-black);
   flex-direction: column;
+}
+.navigation-section-mobile {
+  bottom: 0;
+  left: 0;
+  display: flex;
+  width: 100%;
+  height: 100px;
+  z-index: 9999999999999999;
+  align-items: center;
+  position: fixed;
+  background: var(--background-orange);
+  box-shadow: 0 5px 10px 4px var(--background-black);
+  flex-direction: column;
+}
+
+.navigation-mobile {
+  display: none;
+  width: 100%;
+  height: 100px;
 }
 
 .navigation-link {
@@ -146,16 +165,6 @@ a.router-link-active span {
   box-shadow: 0 -10px 0 0 var(--background-gray-600);
 }
 
-.navigation-mobile {
-  display: none;
-  width: 100%;
-}
-
-.navigation-mobile .navigation-section {
-  width: 100%;
-  height: 100px;
-}
-
 .navigation-mobile .navigation-link {
   flex-direction: row;
   height: 100%;
@@ -208,17 +217,13 @@ a.router-link-active {
   }
 }
 
-@media (max-width: 720px) {
+@media (max-width: 1120px) {
   .navigation-desktop {
     display: none;
   }
 
   .navigation-mobile {
     display: flex;
-  }
-
-  .navigation-section {
-    position: relative;
   }
 }
 </style>

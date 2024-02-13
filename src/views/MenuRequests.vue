@@ -25,7 +25,7 @@ import SelectItem from '@/components/widgets/select/SelectItem.vue';
 
         <section>
             Cardápio:
-            <Select :dataInserted="foods" SelectText="Escolha o prato" >
+            <Select getClass="dropdown-list" :dataInserted="foods" SelectText="Escolha o prato" >
                 <SelectItem v-for="food in foods" :key="food.id">
                     <input 
                         type="checkbox" 
@@ -50,7 +50,7 @@ import SelectItem from '@/components/widgets/select/SelectItem.vue';
 
         <section>
             Acompanhamento:
-            <Select :dataInserted="optional" SelectText="Escolha o Acompanhamento" >
+            <Select getClass="dropdown-list" :dataInserted="optional" SelectText="Escolha o Acompanhamento" >
                 <SelectItem v-for="optional in optional" :key="optional.id">
                     
                     <input 

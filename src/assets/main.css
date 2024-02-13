@@ -9,8 +9,8 @@
 }
 
 #app {
-    display: flex;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: 107px 1fr;
     align-items: center;
     height: 100%;
 }
@@ -28,7 +28,7 @@ main {
     max-width: 1330px;
     align-items: center;
     flex-direction: column;
-    padding: 0 16px;
+    padding: 16px;
 }
 
 a {
@@ -45,17 +45,29 @@ input {
     color: var(--background-white);
 }
 
-li{
+li {
     list-style: none;
+    width: 100%;
+}
+
+p {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 
-@media (max-width: 720px) {
+@media (max-width: 1120px) {
     main {
         overflow-y: auto;
     }
 
-    #app{
+    #app {
+        display: flex;
         flex-direction: column-reverse;
     }
+}
+
+@media (max-width: 720px) {
+
 }
