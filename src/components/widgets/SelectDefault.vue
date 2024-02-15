@@ -111,12 +111,11 @@ export default {
 
 .dropdown-list {
     margin-top: 20px;
-    width: 100%;
     height: auto;
     padding: 16px;
     gap: 8px;
     display: none;
-    flex-direction: column;
+    flex-wrap: wrap;
     background: var(--background-white);
     box-shadow: 0 5px 10px 1px var(--background-black);
     border-radius: 5px;

@@ -25,7 +25,7 @@ import SelectItem from '@/components/widgets/select/SelectItem.vue';
 
         <section>
             Cardápio:
-            <Select getClass="dropdown-list" :dataInserted="foods" SelectText="Escolha o prato" >
+            <Select getClass="select-list" :dataInserted="foods" SelectText="Escolha o prato" >
                 <SelectItem v-for="food in foods" :key="food.id">
                     <input 
                         type="checkbox" 
@@ -50,7 +50,7 @@ import SelectItem from '@/components/widgets/select/SelectItem.vue';
 
         <section>
             Acompanhamento:
-            <Select getClass="dropdown-list" :dataInserted="optional" SelectText="Escolha o Acompanhamento" >
+            <Select getClass="select-list" :dataInserted="optional" SelectText="Escolha o Acompanhamento" >
                 <SelectItem v-for="optional in optional" :key="optional.id">
                     
                     <input 
@@ -127,7 +127,7 @@ export default {
                     this.buttonIsLoading = true
 
                     const data = {
-                        name: this.titles,
+                        name: this.titles.toLowerCase(),
                         food: Array.from(this.selectedFoods, food => ({ type: food, count: this.countSelected[food] || 1 })),
                         optional: Array.from(this.selectedOptions, optional => ({ optional, count: this.countSelected[optional] || 1 })),
                         status: 'Aguardando...'
@@ -191,15 +191,6 @@ section {
     margin-bottom: 40px;
     gap: 8px;
     color: var(--background-white);
-}
-
-.annotation-name {
-    box-shadow: 0 5px 10px 1px var(--background-black);
-    transition: .5s;
-    border-radius: 8px;
-    padding: 0 16px;
-    width: 100%;
-    height: 50px;
 }
 
 label.invalid .annotation-name {

@@ -80,42 +80,70 @@
   ],
   "requests": [
     {
-      "name": "João Vitor",
+      "name": "joão vitor",
       "food": [
         {
           "type": "Macarronada",
-          "count": "10"
+          "count": 1
+        },
+        {
+          "type": "Pizza 4 queijo",
+          "count": 1
+        },
+        {
+          "type": "King-Crab",
+          "count": 1
         }
       ],
       "optional": [
         {
           "optional": "Coca-Cola 2L",
-          "count": "8"
+          "count": 1
+        },
+        {
+          "optional": "Chopp",
+          "count": 1
         }
       ],
-      "status": "Em produção",
+      "status": "Aguardando...",
       "id": 1
     },
     {
-      "name": "Anne Louise",
+      "name": "anne louise",
       "food": [
         {
-          "type": "King-Crab",
-          "count": "1"
+          "type": "Macarronada",
+          "count": 1
         },
         {
-          "type": "Frango Assado",
-          "count": "2"
+          "type": "Pizza 4 queijo",
+          "count": 1
+        },
+        {
+          "type": "King-Crab",
+          "count": 1
+        },
+        {
+          "type": "Strogonoff",
+          "count": 1
         }
       ],
       "optional": [
         {
-          "optional": "Suco de Laranja 800ml",
-          "count": "1"
+          "optional": "Coca-Cola 2L",
+          "count": 1
         },
         {
-          "optional": "Coca-Cola 2L",
-          "count": "1"
+          "optional": "Chopp",
+          "count": 1
+        },
+        {
+          "optional": "Suco de Laranja 800ml",
+          "count": 1
+        },
+        {
+          "optional": "Vinho Tinto 2L",
+          "count": "12"
         }
       ],
       "status": "Aguardando...",

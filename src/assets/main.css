@@ -43,6 +43,14 @@ input {
     border: none;
     border-radius: 8px;
     color: var(--background-white);
+    transition: .5s;
+}
+
+input[type='search'],
+input[type='text']{
+    box-shadow: 0 5px 10px 1px var(--background-black);
+    width: 100%;
+    min-height: 50px;
 }
 
 li {
